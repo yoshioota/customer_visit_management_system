@@ -1,0 +1,14 @@
+<h2><%= @employee.email %>さんの担当営業変更</h2>
+
+<%= form_tag(update_customers_admin_employee_path(@employee), method: :patch) do %>
+  <% @customers.each do |customer| %>
+    <div>
+      <label>
+        <%= check_box_tag 'customer_ids[]', customer.id, @employee.customers.all.find{|c| c.id == customer.id} %>
+        <%= customer.name %>
+      </label>
+    </div>
+  <% end %>
+
+  <%= submit_tag '更新', class: 'btn btn-info' %>
+<% end %>

@@ -1,0 +1,28 @@
+# http://qiita.com/yshr04hrk/items/cb7b81c104321f660661
+
+ja:
+  activerecord:
+    models:
+      employee: 社員
+      customer: 顧客
+
+    attributes:
+
+      employee:
+        admin: 管理者
+        password: パスワード
+        password_confirmation: パスワード(確認)
+
+      customer:
+        name: 会社名
+        memo: メモ
+        address: 住所
+        tel: TEL
+
+      visit_history:
+        customer: 顧客
+        visited_user: 訪問社員
+        visited_at: 訪問日時
+        memo: メモ
+        next_visit_at: 次回訪問予定
+        next_schedule: 次回予定?

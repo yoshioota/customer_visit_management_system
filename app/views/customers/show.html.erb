@@ -1,0 +1,67 @@
+<h2><%= @customer.name %></h2>
+
+<p>
+  <strong>住所:</strong>
+  <%= @customer.address %>
+</p>
+
+<p>
+  <strong>Tel:</strong>
+  <%= @customer.tel %>
+</p>
+
+<p>
+  <strong>メモ:</strong>
+  <%= @customer.memo %>
+</p>
+
+<p>
+  <strong>担当者:</strong>
+  <% @customer.employees.each do |employee| %>
+    <div>
+      <%= employee.email %>
+    </div>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_customer_path(@customer) %> |
+<%= link_to 'Back', customers_path %>
+
+<hr>
+
+<div>
+  <div>
+    <div class="pull-left" style="font-size: 28px;">訪問履歴</div>
+
+    <div class="pull-right">
+      <%= link_to '訪問履歴を追加する', new_customer_visit_history_path(@customer), class: 'btn btn-primary' %>
+    </div>
+  </div>
+
+  <% if @customer.visit_histories.exists? %>
+
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>訪問日時</th>
+        <th>メモ</th>
+        <th>次回訪問予定</th>
+        <th>訪問者</th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @customer.visit_histories.order('visited_at DESC').each do |visit_history| %>
+        <tr>
+          <td><%= link_to time_str(visit_history.visited_at), edit_customer_visit_history_path(@customer, visit_history) %></td>
+          <td><%= truncate visit_history.memo %></td>
+          <td><%= time_str visit_history.next_visit_at %></td>
+          <td><%= visit_history.visited_employee.email %></td>
+          <td><%= link_to '削除', [@customer, visit_history], method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

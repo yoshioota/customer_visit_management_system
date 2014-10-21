@@ -1,0 +1,21 @@
+<%= bootstrap_form_for([:admin, @customer]) do |f| %>
+  <% if @customer.errors.any? %>
+    <div class="alert alert-danger">
+      <p><%= @customer.errors.count %>件のエラーが有ります。</p>
+
+      <ul>
+      <% @customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.text_field :name %>
+  <%= f.text_area :address %>
+  <%= f.text_field :tel %>
+  <%= f.text_area :memo %>
+
+  <%= f.submit %>
+
+<% end %>

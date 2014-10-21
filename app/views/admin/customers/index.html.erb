@@ -1,0 +1,30 @@
+<h1>顧客管理</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>会社名</th>
+      <th>住所</th>
+      <th>Tel</th>
+      <th>メモ</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= link_to customer.name, [:admin, customer] %></td>
+        <td><%= customer.address %></td>
+        <td><%= customer.tel %></td>
+        <td><%= customer.memo %></td>
+        <td><%= link_to '編集', edit_admin_customer_path(customer) %></td>
+        <td><%= link_to '削除', customer, method: :delete, data: { confirm: '削除してよろしいですか?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '顧客新規作成', new_admin_customer_path, class: 'btn btn-info' %>

@@ -1,0 +1,36 @@
+<p>
+  <strong>Email:</strong>
+  <%= @employee.email %>
+</p>
+
+<p>
+  <strong>管理者？:</strong>
+  <%= @employee.admin ? 'Yes' : 'No' %>
+</p>
+
+<%= link_to 'Edit', edit_admin_employee_path(@employee) %> |
+<%= link_to 'Back', admin_employees_path %>
+
+<hr/>
+
+<h3>担当顧客</h3>
+
+<table class="table table-bordered">
+  <tr>
+    <th>
+      会社名
+    </th>
+  </tr>
+
+  <% @employee.customers.each do |customer| %>
+  <tr>
+    <td>
+      <%= customer.name %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<div>
+  <%= link_to '担当顧客を変更', edit_customers_admin_employee_path(@employee), class: 'btn btn-info' %>
+</div>
