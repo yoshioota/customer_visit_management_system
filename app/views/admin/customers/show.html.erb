@@ -15,8 +15,8 @@
   <%= @customer.memo %>
 </p>
 
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
+<%= link_to 'Edit', edit_admin_customer_path(@customer) %> |
+<%= link_to 'Back', admin_customers_path %>
 
 <hr>
 
@@ -34,18 +34,16 @@
         <th>メモ</th>
         <th>次回訪問予定</th>
         <th>訪問者</th>
-        <th></th>
       </tr>
       </thead>
 
       <tbody>
       <% @customer.visit_histories.each do |visit_history| %>
         <tr>
-          <td><%= link_to visit_history.visited_at, edit_admin_customer_visit_history_path(@customer, visit_history) %></td>
+          <td><%= time_str(visit_history.visited_at) %></td>
           <td><%= visit_history.memo %></td>
           <td><%= visit_history.next_visit_at %></td>
           <td><%= visit_history.visited_employee.name %></td>
-          <td><%= link_to '削除', [@customer, visit_history], method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
         </tr>
       <% end %>
       </tbody>

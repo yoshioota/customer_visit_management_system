@@ -1,9 +1,15 @@
+# 管理側顧客管理
+
 class Admin::CustomersController < Admin::AdminAuthorizedController
 
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   before_action do
-    add_breadcrumb '顧客管理'
+    if action_name == 'index'
+      add_breadcrumb '顧客管理'
+    else
+      add_breadcrumb '顧客管理', admin_customers_path
+    end
   end
 
   def index
@@ -11,6 +17,7 @@ class Admin::CustomersController < Admin::AdminAuthorizedController
   end
 
   def show
+    add_breadcrumb @customer.name
   end
 
   def new
@@ -18,6 +25,8 @@ class Admin::CustomersController < Admin::AdminAuthorizedController
   end
 
   def edit
+    add_breadcrumb @customer.name, admin_customer_path(@customer)
+    add_breadcrumb '更新'
   end
 
   def create
@@ -40,7 +49,7 @@ class Admin::CustomersController < Admin::AdminAuthorizedController
 
   def destroy
     @customer.destroy
-    redirect_to customers_url, notice: '削除しました。'
+    redirect_to admin_customers_url, notice: '削除しました。'
   end
 
   private

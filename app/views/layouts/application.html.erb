@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar <%= navbar_color_class %>" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -17,7 +17,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">顧客訪問管理システム</a>
+      <a class="navbar-brand" href="<%= logo_path %>">
+        顧客訪問管理システム
+      </a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -25,35 +27,30 @@
       <% if current_employee %>
         <% if current_employee.admin? %>
           <ul class="nav navbar-nav">
-            <li>
-              <p class='navbar-text'><%= link_to '管理者Home', '/admin' %></p>
+            <li class="<%= 'active' if /\/admin/ === request.path %>">
+              <%= link_to '管理者Home', '/admin' %>
             </li>
-            <li>
-              <p class='navbar-text'><%= link_to '担当者Home', '/home' %></p>
+            <li class="<%= 'active' if /\/home/ === request.path %>">
+              <%= link_to '担当者Home', '/home' %>
             </li>
           </ul>
         <% end %>
 
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <p class='navbar-text'>
-              <%= link_to edit_employee_registration_path do %>
-                <%= current_employee.name %>
-                <%= current_employee.admin? ? '(管理者)' : ''%>
-              <% end %>
-            </p>
+            <%= link_to edit_employee_registration_path do %>
+              <%= current_employee.name %>
+              <%= current_employee.admin? ? '(管理者)' : ''%>
+            <% end %>
           </li>
           <li>
-            <p class='navbar-text'>
-              <%= link_to 'ログアウト', destroy_employee_session_path, method: :delete, class: 'cp-logout' %>
-            </p>
+            <%= link_to 'ログアウト', destroy_employee_session_path, method: :delete, class: 'cp-logout' %>
           </li>
         </ul>
       <% end %>
     </div>
   </div>
 </nav>
-
 
 <div class='container'>
   <%= render partial: 'shared/breadcrumbs' %>

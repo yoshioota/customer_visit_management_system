@@ -1,3 +1,5 @@
+# 管理側の機能はこのクラスを継承させる
+
 class Admin::AdminAuthorizedController < ApplicationController
 
   before_action :authenticate_employee!

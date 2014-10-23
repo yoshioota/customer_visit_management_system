@@ -1,3 +1,5 @@
+# 管理側担当者管理
+
 class Admin::EmployeesController < Admin::AdminAuthorizedController
 
   before_action :set_employee, only: [:show, :edit, :update, :destroy, :edit_customers, :update_customers]
@@ -15,7 +17,8 @@ class Admin::EmployeesController < Admin::AdminAuthorizedController
   end
 
   def edit
-    add_breadcrumb @employee.name
+    add_breadcrumb @employee.name, admin_employee_path(@employee)
+    add_breadcrumb '更新'
   end
 
   def show

@@ -1,3 +1,4 @@
+# 管理側 訪問管理
 class Admin::VisitHistoriesController < Admin::AdminAuthorizedController
 
   before_action :set_customer

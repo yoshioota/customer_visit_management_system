@@ -23,7 +23,7 @@
         <td><%= customer.tel %></td>
         <td><%= customer.memo %></td>
         <td><%= link_to '編集', edit_admin_customer_path(customer) %></td>
-        <td><%= link_to '削除', customer, method: :delete, data: { confirm: '削除してよろしいですか?' } %></td>
+        <td><%= link_to '削除', [:admin, customer], method: :delete, data: { confirm: '削除してよろしいですか?' } %></td>
       </tr>
     <% end %>
   </tbody>

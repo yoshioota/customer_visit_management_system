@@ -23,7 +23,7 @@ ja:
 
       visit_history:
         customer: 顧客
-        visited_user: 訪問社員
+        visited_employee: 訪問担当者
         visited_at: 訪問日時
         memo: メモ
         next_visit_at: 次回訪問予定

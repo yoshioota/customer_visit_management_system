@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
 
+  # アドミン側ルーティング
   get 'admin' => 'admin/home#show'
-
   namespace :admin do
-
-    resources :customers do
-      resources :visit_histories
-    end
+    resources :customers
 
     resources :employees do
       member do
@@ -16,17 +13,21 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'home' => 'home#show'
-
-  resources :customers do
-    resources :visit_histories
+  # 一般側ルーティング
+  get 'home' => 'home/home#show'
+  namespace :home do
+    resources :customers do
+      resources :visit_histories
+    end
   end
 
+  # デバイス設定
   devise_for :employees,
     controllers: {
-        registrations:      'employees/registrations',
+      registrations: 'employees/registrations',
     }
 
+  # root画面
   root 'welcome#index'
 
 end
