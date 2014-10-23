@@ -36,10 +36,17 @@
 
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <p class='navbar-text'><%= current_employee.email %><%= current_employee.admin? ? '(管理者)' : ''%></p>
+            <p class='navbar-text'>
+              <%= link_to edit_employee_registration_path do %>
+                <%= current_employee.name %>
+                <%= current_employee.admin? ? '(管理者)' : ''%>
+              <% end %>
+            </p>
           </li>
           <li>
-            <%= link_to 'ログアウト', destroy_employee_session_path, method: :delete, class: 'cp-logout' %>
+            <p class='navbar-text'>
+              <%= link_to 'ログアウト', destroy_employee_session_path, method: :delete, class: 'cp-logout' %>
+            </p>
           </li>
         </ul>
       <% end %>

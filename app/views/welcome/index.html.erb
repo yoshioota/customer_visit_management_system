@@ -1,6 +1,9 @@
 
-<% if ! current_employee %>
-  <div class="text-center">
-    <%= link_to 'ログイン', new_employee_session_path, class: 'btn btn-info' %>
-  </div>
-<% end %>
+<div class="text-center">
+  <% if ! current_employee %>
+    <%= link_to 'ログイン', new_employee_session_path, class: 'btn btn-default' %>
+  <% end %>
+  <% if ENV['ADMIN_REGISTRATION'].to_i == 1 %>
+    <%= link_to 'サインアップ', new_employee_registration_path, class: 'btn btn-info' %>
+  <% end %>
+</div>

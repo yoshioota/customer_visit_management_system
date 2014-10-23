@@ -1,9 +1,13 @@
 <h1>顧客管理</h1>
 
+<div>
+  <%= paginate @customers %>
+</div>
+
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th>会社名</th>
+      <th>顧客名</th>
       <th>住所</th>
       <th>Tel</th>
       <th>メモ</th>
@@ -24,6 +28,10 @@
     <% end %>
   </tbody>
 </table>
+
+<div>
+  <%= paginate @customers %>
+</div>
 
 <br>
 

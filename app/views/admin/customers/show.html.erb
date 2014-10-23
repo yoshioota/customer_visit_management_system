@@ -44,7 +44,7 @@
           <td><%= link_to visit_history.visited_at, edit_admin_customer_visit_history_path(@customer, visit_history) %></td>
           <td><%= visit_history.memo %></td>
           <td><%= visit_history.next_visit_at %></td>
-          <td><%= visit_history.visited_employee.email %></td>
+          <td><%= visit_history.visited_employee.name %></td>
           <td><%= link_to '削除', [@customer, visit_history], method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
         </tr>
       <% end %>

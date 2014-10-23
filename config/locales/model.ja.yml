@@ -10,11 +10,13 @@ ja:
 
       employee:
         admin: 管理者
+        name: 名前
+        current_password: 現在のパスワード
         password: パスワード
         password_confirmation: パスワード(確認)
 
       customer:
-        name: 会社名
+        name: 顧客名
         memo: メモ
         address: 住所
         tel: TEL

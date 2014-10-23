@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20141021075231) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin"
+    t.string   "name"
   end
 
   add_index "employees", ["email"], name: "index_employees_on_email", unique: true, using: :btree

@@ -44,9 +44,16 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Railsプロセスの一括操作
+gem 'foreman'
+
+# アプリケーション・サーバー
 gem 'puma'
 
+# ログイン認証等
 gem 'devise'
+
+# ページネーション
 gem 'kaminari'
 
 # twitter-bootstrap系
@@ -56,12 +63,14 @@ gem 'compass-rails'
 gem 'font-awesome-rails'
 gem 'bootstrap_form'
 
+# 開発便利系
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'rails-footnotes', '>= 4.0.0', '<5'
 end
 
+# herokuで使用するgems
 gem 'rails_stdout_logging'
 group :production, :staging do
   gem 'rails_12factor'

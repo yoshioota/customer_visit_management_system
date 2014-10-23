@@ -2,8 +2,12 @@ class Admin::CustomersController < Admin::AdminAuthorizedController
 
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
+  before_action do
+    add_breadcrumb '顧客管理'
+  end
+
   def index
-    @customers = Customer.all
+    @customers = Customer.page(params[:page]).all
   end
 
   def show

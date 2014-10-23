@@ -2,17 +2,29 @@ class Admin::EmployeesController < Admin::AdminAuthorizedController
 
   before_action :set_employee, only: [:show, :edit, :update, :destroy, :edit_customers, :update_customers]
 
+  before_action do
+    if action_name == 'index'
+      add_breadcrumb '社員管理'
+    else
+      add_breadcrumb '社員管理', admin_employees_path
+    end
+  end
+
   def index
     @employees = Employee.page(params[:page]).all
   end
 
   def edit
+    add_breadcrumb @employee.name
   end
 
   def show
+    add_breadcrumb @employee.name
   end
 
   def update
+    add_breadcrumb @employee.name
+
     if @employee.update(employee_params)
       redirect_to [:admin, @employee], notice: '更新しました。'
     else
@@ -57,6 +69,6 @@ class Admin::EmployeesController < Admin::AdminAuthorizedController
   end
 
   def employee_params
-    params.require(:employee).permit(:email, :admin, :password, :password_confirmation)
+    params.require(:employee).permit(:name, :email, :admin, :password, :password_confirmation)
   end
 end

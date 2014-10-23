@@ -1,4 +1,4 @@
-<h2><%= @employee.email %>さんの担当営業変更</h2>
+<h2><%= @employee.name %>さんの担当営業変更</h2>
 
 <%= form_tag(update_customers_admin_employee_path(@employee), method: :patch) do %>
   <% @customers.each do |customer| %>

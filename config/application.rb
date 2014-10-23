@@ -24,3 +24,7 @@ module CustomerVisitManagementSystem
     config.i18n.default_locale = :ja
   end
 end
+
+# $ rails server にて立ち上げた時も.envを読む為
+require 'dotenv'
+Dotenv.load

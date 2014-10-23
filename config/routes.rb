@@ -22,7 +22,10 @@ Rails.application.routes.draw do
     resources :visit_histories
   end
 
-  devise_for :employees
+  devise_for :employees,
+    controllers: {
+        registrations:      'employees/registrations',
+    }
 
   root 'welcome#index'
 
