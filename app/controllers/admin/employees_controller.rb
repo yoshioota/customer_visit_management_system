@@ -56,6 +56,7 @@ class Admin::EmployeesController < Admin::AdminAuthorizedController
   end
 
   def edit_customers
+    add_breadcrumb "#{@employee.name}さんの担当顧客変更"
     @customers = Customer.all
   end
 

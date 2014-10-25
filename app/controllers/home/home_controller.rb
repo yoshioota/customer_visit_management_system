@@ -2,6 +2,5 @@
 
 class Home::HomeController < Home::AuthorizedController
   def show
-    
   end
 end

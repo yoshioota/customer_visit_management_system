@@ -67,6 +67,7 @@ gem 'bootstrap_form'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+
   gem 'rails-footnotes', '>= 4.0.0', '<5'
 end
 
